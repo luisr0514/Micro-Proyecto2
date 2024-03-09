@@ -5,7 +5,7 @@ import '../App.css'
 const Login = () => {
   return (
     <div className='container'>
-      <div className="row">
+      <div className="row"> 
         {/* columna pequeña para el formulario */}
         <div className="col-mid-4">
             <div className="padre">
@@ -17,16 +17,19 @@ const Login = () => {
                   </form>
 
 
+
+
                 </div>
             </div>
 
-        </div>
+
+    </div>
         {/* columna mas grande */}
         <div className="col-md-8">
             <img src={imagen} alt="" className='tamaño-imagen' />
         </div>
       </div>
-    </div>
+  </div>
   )
 }
 

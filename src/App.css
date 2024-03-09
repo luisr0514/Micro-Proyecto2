@@ -39,51 +39,12 @@
     margin-bottom: 20px;
     color: white;
 }
-.btmform2{
-    background-color: #0d6efd;
-    border-color: slategray;
-    border-radius: 30px;
-    width: 45%;
-    padding: 15px;
-    border-width: 0px;
+.select{
     margin-bottom: 20px;
-    color: white;
     margin-left: 20px;
 }
 
-
-/* Estilos para la lista de clubes */
-.club-list {
-    list-style: none;
-    padding: 0;
-    color:aquamarine;
-  }
-  
-  .club-info {
-    color: blueviolet;
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .club-info h2 {
-    margin-top: 0;
-  }
-  
-  .club-info p {
-    margin-bottom: 10px;
-  }
-  
-  .club-info button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .club-info button:hover {
-    background-color: #0056b3;
-  }
+.container{
+    display: flex;
+    margin-top: 50px;
+}

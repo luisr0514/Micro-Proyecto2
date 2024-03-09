@@ -6,6 +6,7 @@ import Search from './componentes/Search'
 import Profile from './componentes/Profile'
 
 
+import Registro from './componentes/Registro'
 
 export const router = createBrowserRouter([
 
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
     {
         path: '/profile',
         element: <Profile/>
+    },
+    {
+        path: '/registro',
+        element: <Registro/>
     }
 
 ])

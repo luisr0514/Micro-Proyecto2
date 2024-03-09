@@ -5,8 +5,8 @@ const Home = () => {
   return (
     <div>
       <h2>BIENVENIDO</h2>
-      {/* <Link href="/login">Iniciar sesion</Link> */}
-      <a href="/login">Iniciar sesion</a>
+      <Link to="/login">Iniciar sesion</Link>
+
     </div>
   )
 }

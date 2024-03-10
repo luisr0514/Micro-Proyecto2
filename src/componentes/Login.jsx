@@ -1,14 +1,35 @@
 import React, { useState } from 'react'
 import imagen from '../assets/login.png'
 import appFirebase from "../credenciales";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from 'react-router-dom'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate  } from 'react-router-dom'
 
 const auth = getAuth(appFirebase) 
 
 const Login = () => {
 
-  const [registrando, setRegistrando] = useState(false)
+  const [correo, setCorreo]= useState ('');
+  const [password, setPassword]= useState ('');
+
+  const navigate = useNavigate()
+
+  async function functAutenticacion(){
+
+    try {
+      await signInWithEmailAndPassword (auth, correo, password);
+      alert("se ingreso correctamente")
+      navigate("/home")
+      
+    } catch (error) {
+      alert("correo o contraseña son incorrectos")
+    }
+    // await signInWithEmailAndPassword (auth, correo, password);
+    // alert("se ingreso correctamente")
+    // navigate("/home")
+
+
+
+  }
 
   return (
     <div className="container">
@@ -19,9 +40,9 @@ const Login = () => {
             <div className="card card-body shadow-lg">
 
               <form>
-                <input type="text" placeholder='Ingresar correo electronico' className='cajatexto' />
-                <input type="password" placeholder='Ingresar contraceña' className='cajatexto' />
-                <button className='btmform'>Inicia sesion</button>
+                <input type="text" placeholder='Ingresar correo electronico' className='cajatexto' value={correo} onChange={(e)=> setCorreo(e.target.value)} required/>
+                <input type="password" placeholder='Ingresar contraceña' className='cajatexto' value={password} onChange={(e)=> setPassword(e.target.value)} required/>
+                <button className='btmform'onClick={functAutenticacion} type='button'>Inicia sesion</button>
               </form>
               <h4>
                 Si no tienes cuenta 

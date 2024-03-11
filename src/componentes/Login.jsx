@@ -13,6 +13,7 @@ const Login = () => {
 
   const navigate = useNavigate()
 
+
   async function functAutenticacion(){
 
     try {
@@ -23,9 +24,6 @@ const Login = () => {
     } catch (error) {
       alert("correo o contraseña son incorrectos")
     }
-    // await signInWithEmailAndPassword (auth, correo, password);
-    // alert("se ingreso correctamente")
-    // navigate("/home")
 
 
 

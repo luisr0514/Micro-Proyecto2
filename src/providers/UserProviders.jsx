@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { auth } from '../credenciales';
-import { UserContex } from "../context/user";
+import  {UserContext}  from '../context/user';
 
 export default function UseProvider({children}){
     const [user, setUser] = useState(null)
@@ -13,6 +13,6 @@ export default function UseProvider({children}){
         });
     }, [])
 
-    return <UserContex.Provider value={user}>{children}</UserContex.Provider>
+    return <UserContext.Provider value={user}>{children}</UserContext.Provider>
     
 }

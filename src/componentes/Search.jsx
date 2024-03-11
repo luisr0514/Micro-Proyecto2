@@ -1,11 +1,20 @@
-import React from 'react'
-import Navbar from './navegación/Navbar'
+
+import Navbar from './navegación/Navbar';
+import SearchBar from './SearchBar';
+import React from 'react';
 
 const Search = () => {
+
   return (
-    <div>
+    <div >
       <Navbar/>
-      <h1>BUSCADOR</h1>
+      <h1 >BUSCADOR</h1>
+      <div className= "style">
+        <div className = 'search-bar-container'>
+          <SearchBar/>
+        </div>
+      </div>
+      
     </div>
   )
 }

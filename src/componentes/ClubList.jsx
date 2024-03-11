@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react'
 import Navbar from './navegación/Navbar';
 import {db} from '../credenciales'
-import { collection, getDocs, query, where} from 'firebase/firestore';
+import { collection, getDocs} from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
@@ -31,8 +31,8 @@ const ClubList = () => {
 //OJOOOO faltan los videojuegos
         <div>
           <Navbar/>
-          <div className= 'design'>
           <h1>NUESTROS CLUBES</h1>
+          <div className= 'style'>
             <div>
                 {data.map(club => (
                   <div key={club.id}>

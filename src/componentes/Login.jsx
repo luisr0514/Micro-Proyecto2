@@ -61,7 +61,7 @@ const Login = () => {
           <img src={imagen} alt="" className="tamaño-imagen" />
         </div>
       </div>
-    </div>
+  </div>
   )
 
 }

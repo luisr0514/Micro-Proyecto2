@@ -10,7 +10,7 @@ import Registro from './componentes/Registro'
 export const router = createBrowserRouter([
 
     {
-        path: '/login',
+        path: '/',
         element: <Login/>
 
     },

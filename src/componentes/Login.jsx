@@ -1,17 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import imagen from '../assets/login.png'
 import app from "../credenciales";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate  } from 'react-router-dom'
+import { useUser } from '../context/user';
+
 
 const auth = getAuth(app) 
 
 const Login = () => {
+  const user = useUser()
+
 
   const [correo, setCorreo]= useState ('');
   const [password, setPassword]= useState ('');
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  // useEffect(()=>{
+  //   if (user) {
+  //     navigate('/home', (replace: ))
+  //   }
+  // },[])
+
   
 
   async function functAutenticacion(){

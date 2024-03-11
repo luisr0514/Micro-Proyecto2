@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import imagen from '../assets/login.png'
-import appFirebase from "../credenciales";
+import app from "../credenciales";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate  } from 'react-router-dom'
 
-const auth = getAuth(appFirebase) 
+const auth = getAuth(app) 
 
 const Login = () => {
 
@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword]= useState ('');
 
   const navigate = useNavigate()
-
+  
 
   async function functAutenticacion(){
 

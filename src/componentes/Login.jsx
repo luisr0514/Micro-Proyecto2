@@ -1,44 +1,65 @@
 import React, { useEffect, useState } from 'react'
 import imagen from '../assets/login.png'
-import {app} from "../credenciales";
+import { app, db } from "../credenciales";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link, useNavigate  } from 'react-router-dom'
-import { useUser } from '../context/user';
+import { Link, useNavigate } from 'react-router-dom'
+import { UserContext, useUser } from '../context/user';
+import { collection, getDocs, query, where } from '@firebase/firestore';
+import Profile from './Profile';
 
 
-const auth = getAuth(app) 
+const auth = getAuth(app)
+
+
 
 const Login = () => {
   const user = useUser()
 
+  const [correo, setCorreo] = useState('');
+  const [password, setPassword] = useState('');
+  const email= correo;
 
-  const [correo, setCorreo]= useState ('');
-  const [password, setPassword]= useState ('');
+  const navigate = useNavigate()
 
-  // const navigate = useNavigate()
-  // useEffect(()=>{
-  //   if (user) {
-  //     navigate('/home', (replace: ))
-  //   }
-  // },[])
-
-  
-
-  async function functAutenticacion(){
-
-    try {
-      await signInWithEmailAndPassword (auth, correo, password);
-      alert("se ingreso correctamente")
-      navigate("/home")
-      
-    } catch (error) {
-      alert("correo o contraseña son incorrectos")
+  useEffect(() => {
+    if (user) {
+      navigate('/home', { replace: true })
     }
+  }, [user, navigate])
 
 
 
+  const handleLogin = async () => {
+
+    const user = await signInWithEmailAndPassword(auth, correo, password);
+    if (user !== null) {
+      navigate('/home');
+    } else {
+      alert("no se pudo iniciar sesion");
+    }
+    searchUserByEmail()
+  };
+
+  const searchUserByEmail = async () => {
+    try {
+      const userRef = collection(db, "usuarios")
+      const q = query(userRef, where("correo", "==", correo))
+      const querySnapshot = await getDocs(q)
+      if (!querySnapshot.empty) {
+        const user = querySnapshot.docs[0].data();
+        console.log("Usuario encontrado:", user);
+        // Accede a los demás datos del usuario
+        console.log("Nombre:", user.nombre);
+        console.log("Apellido:", user.apellido);
+        console.log(email)
+
+      } else {
+        console.log("No se encontró ningún usuario con ese correo electrónico.");
+      }
+    } catch (error) {
+      console.error("Error al buscar usuario por correo electrónico:", error);
+    }
   }
-
   return (
     <div className="container">
       <div className="row">
@@ -48,13 +69,13 @@ const Login = () => {
             <div className="card card-body shadow-lg">
 
               <form>
-                <input type="text" placeholder='Ingresar correo electronico' className='cajatexto' value={correo} onChange={(e)=> setCorreo(e.target.value)} required/>
-                <input type="password" placeholder='Ingresar contraceña' className='cajatexto' value={password} onChange={(e)=> setPassword(e.target.value)} required/>
-                <button className='btmform'onClick={functAutenticacion} type='button'>Inicia sesion</button>
+                <input type="text" placeholder='Ingresar correo electronico' className='cajatexto' value={correo} onChange={(e) => setCorreo(e.target.value)} required />
+                <input type="password" placeholder='Ingresar contraceña' className='cajatexto' value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <button className='btmform' onClick={handleLogin} type='button'>Inicia sesion</button>
               </form>
               <h4>
-                Si no tienes cuenta 
-                <Link to='/registro' style={{marginLeft: '20px' }}>Registrate</Link>
+                Si no tienes cuenta
+                <Link to='/registro' style={{ marginLeft: '20px' }}>Registrate</Link>
               </h4>
             </div>
           </div>
@@ -64,8 +85,8 @@ const Login = () => {
           <img src={imagen} alt="" className="tamaño-imagen" />
         </div>
       </div>
-  </div>
+    </div>
   )
-}
 
+}
 export default Login

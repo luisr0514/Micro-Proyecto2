@@ -1,6 +1,6 @@
 import { useState } from 'react'
 // importando los modulos de firebase
-import appFirabase from './credenciales'
+import app from './credenciales'
 import {getAuth, onAuthStateChanged} from 'firebase/auth'
 import './App.css'
 const auth = getAuth(appFirabase)

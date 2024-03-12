@@ -1,11 +1,14 @@
 import {createBrowserRouter} from 'react-router-dom'
 import Login from './componentes/Login'
-import Home from './componentes/Home'
-import ClubList from './componentes/ClubList'
-import Search from './componentes/Search'
-import Profile from './componentes/Profile'
 
+import ClubList from './componentes/ClubList'
+
+import Profile from './componentes/Profile'
 import Registro from './componentes/Registro'
+import ClubPage from './componentes/ClubPage'
+import VideogamePage from './componentes/VideogamePage'
+import SearchBar from './componentes/SearchBar'
+
 
 export const router = createBrowserRouter([
 
@@ -15,16 +18,12 @@ export const router = createBrowserRouter([
 
     },
     {
-        path: '/',
-        element: <Home/>
-    },
-    {
         path: '/list',
         element: <ClubList/>
     },
     {
         path: '/search',
-        element: <Search/>
+        element: <SearchBar/>
     },
     {
         path: '/profile',
@@ -34,6 +33,14 @@ export const router = createBrowserRouter([
         path: '/registro',
         element: <Registro/>
     },
+    {
+        path: 'list/club/:id',
+        element: <ClubPage/>
+    },
+    {
+        path: '/search/videogame/:titulo',
+        element: <VideogamePage/>
+    }
 
 ])
 

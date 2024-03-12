@@ -1,47 +1,31 @@
-import React, {useState, useEffect} from 'react'
+import { useState } from 'react'
 import {FaSearch} from 'react-icons/fa'
 import './SearchBar.css'
-import { collection, getDocs, query, where, } from 'firebase/firestore';
-import { db } from '../credenciales';
-
+import Navbar from './navegación/Navbar';
+import { Link } from 'react-router-dom';
 
 
 const SearchBar = () => {
     
-    const [input, setInput]= useState('');
-
-    useEffect(() => {
-        const fetchData = async (value) => {
-            try {
-                const q = query(collection(db, 'juegos'), where('titulo', '==', value)); // Crea una consulta para buscar juegos por nombre
-                getDocs(q)
-                .then(res => setInput(res.docs.map(game =>({id:game.id, ...game.data()}))))
-            } catch (error) {
-                console.error('Error al obtener los datos de los juegos', error);
-                setInput([]);
-            }
-        }
-
-        fetchData(input); // Llama a fetchData cuando el componente se monta y cada vez que el valor del input cambia
-    }, [input]);
-
-    const handleChange = (e) => {
-        setInput(e.target.value);
-    }
-
-    
-
+  const [ titulo, setTitulo ] = useState('');
+  
   return (
-    <div className = 'input-wrapper'>
-        <FaSearch id ='search-icon'/>
-        <input 
-            placeholder='Escribe para buscar...' 
-            value={input} 
-            onChange={handleChange}
-        />
-    </div>
-      
-      
+    < div>
+      <Navbar/>
+      <h1 >BUSCADOR</h1>
+      <div className = 'search-bar-container'>
+        <h4>Ingresa el nombre del videojuego que desas buscar</h4>
+        <div className = 'input-wrapper'>
+          <FaSearch id ='search-icon'/>
+          <input 
+              placeholder='Escribe para buscar...' 
+              value={titulo} 
+              onChange={(e) => setTitulo(e.target.value)}
+          />
+          <Link to= {`/search/videogame/${titulo}`} className='btmform' type='button'>Buscar Videojuego</Link>
+        </div>
+      </div>
+    </div>   
 
   )
 }

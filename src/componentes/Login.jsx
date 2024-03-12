@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import imagen from '../assets/login.png'
-import app from "../credenciales";
+import {app} from "../credenciales";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate  } from 'react-router-dom'
 import { useUser } from '../context/user';

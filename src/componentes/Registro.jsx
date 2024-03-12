@@ -42,7 +42,7 @@ const Registro = () => {
                         </form>
                         <h4>
                             Ya tienes una cuenta
-                            <Link to='/login' style={{marginLeft: '20px' }}>Inicia sesion</Link>
+                            <Link to='/' style={{marginLeft: '20px' }}>Inicia sesion</Link>
                         </h4>
                         
                     </div>

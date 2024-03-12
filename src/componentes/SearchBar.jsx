@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {FaSearch} from 'react-icons/fa'
+// import {FaSearch} from 'react-icons/fa'
 import './SearchBar.css'
 import Navbar from './navegación/Navbar';
 import { Link } from 'react-router-dom';

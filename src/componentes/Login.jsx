@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import imagen from '../assets/login.png'
 import { app, db } from "../credenciales";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from 'react-router-dom'
-import { UserContext, useUser } from '../context/user';
+import { useUser } from '../context/user';
 import { collection, getDocs, query, where } from '@firebase/firestore';
-import Profile from './Profile';
+
 
 
 const auth = getAuth(app)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { crearUsuario } from '../controllers/usuarios'
 
@@ -10,8 +10,8 @@ const Registro = () => {
     const [apellido, setApelldio]= useState ('');
     const [correo, setCorreo]= useState ('');
     const [password, setPassword]= useState ('');
-    const [juego, setJuego]= useState('')
-    const [club , setClub]= useState
+    const [juego, setJuego]= useState('');
+    const [club , setClub]= useState('');
 
     async function enviar() {
         await crearUsuario({nombre, apellido, correo, password, juego, club})

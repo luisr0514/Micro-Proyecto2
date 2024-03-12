@@ -1,4 +1,4 @@
-import React from 'react'
+
 import {UseClub} from '../hooks/club'
 import { useParams } from 'react-router-dom'
 import Navbar from './navegación/Navbar'

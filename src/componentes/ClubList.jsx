@@ -1,7 +1,7 @@
-import React, { useEffect, useState} from 'react'
+import { useEffect, useState} from 'react'
 import Navbar from './navegación/Navbar';
 import { Link } from 'react-router-dom'
-import { getClubs, getClubs2 } from '../controllers/clubes';
+import { getClubs } from '../controllers/clubes';
 
 
 const ClubList = () => {
@@ -9,7 +9,7 @@ const ClubList = () => {
     
   useEffect(() => {
     const load = async () => {
-      const clubs = await getClubs2();
+      const clubs = await getClubs();
       setClubs(clubs);
     };
     load();

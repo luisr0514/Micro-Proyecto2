@@ -1,22 +1,39 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
 import { crearUsuario } from '../controllers/usuarios'
+import { UserContext, useUser } from '../context/user';
+import { Link, useNavigate } from 'react-router-dom'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { app, db } from "../credenciales";
 
-
+const auth = getAuth(app)
 
 const Registro = () => {
+    const user = useUser()
 
     const [nombre, setNombre]= useState ('');
     const [apellido, setApelldio]= useState ('');
     const [correo, setCorreo]= useState ('');
     const [password, setPassword]= useState ('');
     const [juego, setJuego]= useState('')
-    const [club , setClub]= useState
+    const [club , setClub]= useState ('')
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (user) {
+          navigate('/list', { replace: true })
+        }
+      }, [user, navigate])
 
     async function enviar() {
         await crearUsuario({nombre, apellido, correo, password, juego, club})
 
         alert ('se ingreso correctameente')
+        alert('ahora inicie sesion')
+
+        navigate('/')
+
+
 
 
     }

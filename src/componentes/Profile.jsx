@@ -1,7 +1,12 @@
 import React from 'react'
 import Navbar from './navegación/Navbar'
+import { useUser } from '../context/user'
+import { useContext } from 'react'
+import obtenerusuario from './Login'
 
-const Profile = () => {
+
+export default function Profile () {
+  const user = useUser()
   return (
     <div>
       <Navbar/>
@@ -10,4 +15,5 @@ const Profile = () => {
   )
 }
 
-export default Profile
+// export default Profile
+

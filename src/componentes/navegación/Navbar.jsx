@@ -1,7 +1,17 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, {useEffect} from 'react'
+import {Link , useNavigate} from 'react-router-dom'
+import { logOut } from '../../controllers/usuarios'
+import { useUser } from '../../context/user'
+
 
 const Navbar = () => {
+  const user = useUser();
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!user) {
+      navigate('/', {replace: true })
+    }
+  },[user, navigate])
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -20,6 +30,9 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to='/profile'>Profile</Link>
+              </li>
+              <li className="nav-item">
+                <button type="button" onClick={() => logOut()}>cerrar sesion</button>
               </li>
             </ul>
           </div>

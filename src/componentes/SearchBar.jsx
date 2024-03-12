@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {FaSearch} from 'react-icons/fa'
+// import {FaSearch} from 'react-icons/FaSearch'
 import './SearchBar.css'
 import { collection, getDocs, query, where, } from 'firebase/firestore';
 import { db } from '../credenciales';

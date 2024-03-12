@@ -10,6 +10,7 @@ export default function UseProvider({children}){
         onAuthStateChanged(auth, (user)=>{
             console.log(user!==null ? 'Usuario loggeado':'Usuario no loggeado');
             setUser(user)
+            
         });
     }, [])
 

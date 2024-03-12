@@ -23,7 +23,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user) {
-      navigate('/home', { replace: true })
+      navigate('/list', { replace: true })
     }
   }, [user, navigate])
 
@@ -33,7 +33,7 @@ const Login = () => {
 
     const user = await signInWithEmailAndPassword(auth, correo, password);
     if (user !== null) {
-      navigate('/home');
+      navigate('/list');
     } else {
       alert("no se pudo iniciar sesion");
     }
